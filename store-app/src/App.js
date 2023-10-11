@@ -37,7 +37,7 @@ function App() {
     try {
       const p = await axios.get("/api/products");
       setProducts(p.data.products);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   useEffect(() => {
@@ -137,7 +137,7 @@ function App() {
                   data-item-price={product.price}
                   onClick={() => addToOrder(product.name)}
                 >
-                  Add to Cart
+                  Add to Cart !
                 </Button>
               </Box>
             </Box>

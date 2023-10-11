@@ -18,10 +18,10 @@ spec:
                 name: store-cluster-ip-service
                 port:
                   number: 80
-          # - path: /api/?(.*)
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: prod-api-cluster-ip-service
-          #       port:
-          #         number: 5002
+          - path: /api/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: prod-api-cluster-ip-service
+                port:
+                  number: 5002
