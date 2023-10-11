@@ -46,6 +46,7 @@ jobs:
 
       - name: Deploy Image to Amazon EKS
         run: |
+          aws eks update-kubeconfig --name chak-88 --region ${{secrets.AWS_REGION}}
           kubectl set image deployment/store store=${{ steps.build-image.outputs.image  }}
 
 
