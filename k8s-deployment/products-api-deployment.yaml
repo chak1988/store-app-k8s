@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prod-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      component: prod-deployment
+  template:
+    metadata:
+      labels:
+        component: prod-deployment
+    spec:
+      containers:
+        - name: prod-deployment
+          image: chak1988/products-api:v2
+          ports:
+            - containerPort: 5002
+          env:
+            - name: MONGODB_HOST
+              value: "mongodb-cluster-ip-service"
+          envFrom:
+            - configMapRef:
+                name: rabbitmq-configmap
+      

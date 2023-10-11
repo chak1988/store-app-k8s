@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: store-cluster-ip-service
+  labels:
+    component: store-service
+spec:
+    type: ClusterIP
+    ports:
+      - port: 80
+        targetPort: 80
+    selector:
+      # owner: chak88
+      component: store
