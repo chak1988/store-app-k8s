@@ -46,6 +46,6 @@ jobs:
 
       - name: Deploy Image to Amazon EKS
         run: |
-          kubectl set image deployment/store store=${{ steps.build-image.outputs.image  }}"
+          kubectl set image deployment/store store=${{ steps.build-image.outputs.image  }}
 
 
