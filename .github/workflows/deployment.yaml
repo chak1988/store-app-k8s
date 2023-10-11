@@ -34,7 +34,7 @@ jobs:
         env:
           IMG_TAG: ${{github.sha}}
         run: |
-          docker build -t chak1988/store-app:$IMG_TAG .
+          docker build -t chak1988/store-app:$IMG_TAG store-app/
           docker push chak1988/store-app:$IMG_TAG
           echo "::set-output name=image::chak1988/store-app:$IMG_TAG"
 
