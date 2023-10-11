@@ -34,8 +34,18 @@ jobs:
         env:
           IMG_TAG: ${{github.sha}}
         run: |
-          docker build -t chak1988/store-app:$IMG_TAG store-app/
+          docker build -t chak1988/store-app:$IMG_TAG store-app/ 
           docker push chak1988/store-app:$IMG_TAG
           echo "::set-output name=image::chak1988/store-app:$IMG_TAG"
+
+      - name: Install Kubectl
+        uses: azure/setup-kubectl@v1
+
+      - name: Update Kubectl Context
+        run: aws eks update-kubeconfig --name chak-88 --region ${{secrets.AWS_REGION}}
+
+      - name: Deploy Image to Amazon EKS
+        run: |
+          kubectl set image deployment/store store=${{ steps.build-image.outputs.image  }}"
 
 
