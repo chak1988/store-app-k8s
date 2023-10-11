@@ -8,8 +8,8 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
-    - host: ad45e8473a675437c98ab5b0e36869af-2d2bbf7f2ba64035.elb.us-west-2.amazonaws.com
-      khttp:
+    - host: a57473f9e7ba048c6a68e32044398c0e-c7dff8bd17b4b5ad.elb.us-west-2.amazonaws.com
+      http:
         paths:
           - path: /?(.*)
             pathType: Prefix
@@ -18,10 +18,10 @@ spec:
                 name: store-cluster-ip-service
                 port:
                   number: 80
-          - path: /api/?(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: prod-api-cluster-ip-service
-                port:
-                  number: 5002
+          # - path: /api/?(.*)
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: prod-api-cluster-ip-service
+          #       port:
+          #         number: 5002
