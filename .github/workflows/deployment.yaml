@@ -28,3 +28,14 @@ jobs:
         with: # Set the secret as an input
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: BUILD, TAG & PUSH TO DOCKERHUB
+        id: build-image
+        env:
+          IMG_TAG: ${{github.sha}}
+        run: |
+          docker build -t chak1988/store-app:$IMG_TAG .
+          docker push chak1988/store-app:$IMG_TAG
+          echo "::set-output name=image::chak1988/store-app:$IMG_TAG"
+
+
